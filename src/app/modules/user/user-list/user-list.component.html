@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-12">
+    <app-title-h1 text="LISTA DE USUARIOS"></app-title-h1>
+  </div>
+  <ng-container *ngIf="users">
+    <app-card-user [data]="user" *ngFor="let user of users;" class="col-12 col-md-6 col-xl-4"></app-card-user>
+
+  </ng-container>
+  <div class="col-12">
+  </div>
+</div>
