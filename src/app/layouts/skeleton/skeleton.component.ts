@@ -9,6 +9,7 @@ export class SkeletonComponent {
   public showLeftNav = true;
   public $theme: 'dark' | 'red' | 'blue-dark' | 'yelow' = 'blue-dark'
 
+
   constructor() { }
 
   showMenu() {

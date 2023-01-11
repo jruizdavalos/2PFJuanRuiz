@@ -19,13 +19,13 @@ $secondary: #655C5C;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     padding: 0 3rem;
 
     &-logo {
-      height: 50px;
-      margin-top: 3rem;
+      height: 200px;
+
     }
 
     &-content {
@@ -133,6 +133,103 @@ $secondary: #655C5C;
           background: #fff;
           color: $primary;
         }
+
+        &:disabled {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &-footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+
+      &__links {
+        margin-bottom: 1rem;
+
+        >a {
+          margin-right: 1rem;
+          color: $primary;
+          text-decoration: none;
+
+          &:hover {
+            cursor: pointer;
+            font-weight: 600;
+          }
+        }
+      }
+
+      &__socials {
+        &_social {
+          font-size: 2rem;
+          color: $primary;
+          margin-left: 1rem;
+
+          &:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 760) {
+  .login {
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+    }
+
+    &-form {
+      width: calc(90% - 3rem);
+      padding: 1rem;
+      height: fit-content;
+
+      &-logo {
+        height: 30px;
+      }
+
+      &-content {
+        width: 100%;
+        margin: 2rem 0 1 rem 0;
+
+        >h1 {
+          font-size: 1.5rem;
+        }
+
+        >p {
+          margin-bottom: 2rem;
+        }
+      }
+
+      &-input {
+        >input {
+          height: 40px;
+        }
+      }
+
+      &-buttons {
+        float: right;
+
+        &__signup,
+        &__signin {
+          height: 40px;
+          min-width: 100px;
+        }
+
+      }
+
+      &-footer {
+        flex-direction: column;
       }
     }
   }
