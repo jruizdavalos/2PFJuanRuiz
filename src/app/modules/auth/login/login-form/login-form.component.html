@@ -1,19 +1,31 @@
 <h1>Bienvenido</h1>
 <p>Gracias por volver</p>
-<div class="login-form-input">
-  <label>Email*: </label>
-  <input type="email" placeholder="Email" [(ngModel)]="loginForm.email.val">
-  <small class="bg-danger text-light mt-1 px-2 py-1 rounded"
-    *ngIf="!loginForm.email.isValid() && password.touched">{{loginForm.email.error}}</small>
-</div>
-<div class="login-form-input">
-  <label>Contraseña: </label>
-  <input type="password" placeholder="Contraseña" [(ngModel)]="loginForm.password.val" #password="ngModel">
-  <small class="bg-danger text-light mt-1 px-2 py-1 rounded"
-    *ngIf="!loginForm.password.isValid() && password.touched">{{loginForm.password.error}} </small>
-</div>
-<small>Olvide la Contraseña</small>
-<div class="login-form-buttons">
-  <button class="login-form-buttons__signup">Registrarse</button>
-  <button class="login-form-buttons__signin" [disabled]="!isValidForm" (click)="authenticate()">Iniciar sesion</button>
-</div>
+<form [formGroup]="loginForm" (ngSubmit)="authenticate()">
+  <div class="login-form-input">
+    <label>Email*: </label>
+    <input type="email" placeholder="Email" formControlName="email">
+    <small class="bg-danger text-light mt-1 px-2 py-1 rounded"
+      *ngIf="(fm.email.dirty || fm.email.touched) && fm.email.errors && loginSubmitted">
+      <ng-container [ngSwitch]="fm.email.value">
+        <ng-container *ngSwitchCase="''">El email es requerido!</ng-container>
+        <ng-container *ngSwitchDefault>El email es invalido</ng-container>
+      </ng-container>
+    </small>
+  </div>
+  <div class="login-form-input">
+    <label>Contraseña: </label>
+    <input type="password" placeholder="Contraseña" formControlName="password">
+    <small class="bg-danger text-light mt-1 px-2 py-1 rounded"
+      *ngIf="(fm.password.dirty || fm.password.touched) && fm.password.errors && loginSubmitted">
+      <ng-container [ngSwitch]="fm.password.value">
+        <ng-container *ngSwitchCase="''">El password es requerido!</ng-container>
+        <ng-container *ngSwitchDefault>El password es invalido</ng-container>
+      </ng-container>
+    </small>
+  </div>
+  <small class="small">Olvide la Contraseña</small>
+  <div class="login-form-buttons">
+    <button class="login-form-buttons__signup">Registrarse</button>
+    <button class="login-form-buttons__signin" type="submit" [disabled]="!loginForm.valid">Iniciar sesion</button>
+  </div>
+</form>

@@ -43,7 +43,7 @@ export const CONST_LOGIN_PAGE: {
     faInstagramSquare
   ],
   STYLE_BACKGROUND: {
-    backgroundImage: `url($(IMAGES_ROUTES.BACKGROUND_LOGIN))`
+    backgroundImage: `url(${IMAGES_ROUTES.BACKGROUND_LOGIN})`
   },
   LOGO: IMAGES_ROUTES.LOGO
 }
