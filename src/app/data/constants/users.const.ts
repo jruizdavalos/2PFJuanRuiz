@@ -1,7 +1,7 @@
 import { ICardUser } from '@shared/components/cards/card-user/icard-user.metadata';
 
 export const USERS_DATA: ICardUser[] = [
-  {
+  /* {
     id: 1,
     name: 'Ivan Larios',
     age: 27,
@@ -58,5 +58,5 @@ export const USERS_DATA: ICardUser[] = [
     avatar: 'https://images.wisegeek.com/woman-at-desk-with-paper.jpg',
     gender: 'F'
   },
-
+ */
 ];

@@ -2,12 +2,14 @@
   "users": [
     {
       "id": 1,
-      "name": "Ivan Larios",
+      "name": "Ivan Lariosasaxdasd",
       "age": 27,
       "description": "Desarrollador fullstack",
       "avatar": "https://ideapod.com/wp-content/uploads/2017/08/person-1.jpg",
       "work": "Project manager",
-      "gender": "M"
+      "gender": "M",
+      "email": "juan@gmail.com",
+      "password": "123456"
     },
     {
       "id": 2,

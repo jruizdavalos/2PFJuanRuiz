@@ -4,8 +4,7 @@
   <div class="login-form-input">
     <label>Email*: </label>
     <input type="email" placeholder="Email" formControlName="email">
-    <small class="bg-danger text-light mt-1 px-2 py-1 rounded"
-      *ngIf="(fm.email.dirty || fm.email.touched) && fm.email.errors && loginSubmitted">
+    <small class="bg-danger text-light mt-1 px-2 py-1 rounded" *ngIf="fm.email.errors && loginSubmitted">
       <ng-container [ngSwitch]="fm.email.value">
         <ng-container *ngSwitchCase="''">El email es requerido!</ng-container>
         <ng-container *ngSwitchDefault>El email es invalido</ng-container>
@@ -15,12 +14,13 @@
   <div class="login-form-input">
     <label>Contraseña: </label>
     <input type="password" placeholder="Contraseña" formControlName="password">
-    <small class="bg-danger text-light mt-1 px-2 py-1 rounded"
-      *ngIf="(fm.password.dirty || fm.password.touched) && fm.password.errors && loginSubmitted">
+    <small class="bg-danger text-light mt-1 px-2 py-1 rounded" *ngIf="fm.password.errors && loginSubmitted">
+
       <ng-container [ngSwitch]="fm.password.value">
         <ng-container *ngSwitchCase="''">El password es requerido!</ng-container>
         <ng-container *ngSwitchDefault>El password es invalido</ng-container>
       </ng-container>
+
     </small>
   </div>
   <small class="small">Olvide la Contraseña</small>

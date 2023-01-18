@@ -4,6 +4,8 @@ export interface ICardUser {
   gender: string;
   name: string;
   age: number;
+  email?: string,
+  password: string,
   description: string;
   work?: string;
 }

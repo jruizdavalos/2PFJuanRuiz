@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../../data/services/api/auth.service';
 
 
 @Component({
@@ -14,8 +15,10 @@ export class LoginFormComponent {
   public loginSubmitted = false;
 
 
+
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.loginForm = this.formBuilder.group({
       email: [
@@ -41,6 +44,9 @@ export class LoginFormComponent {
     if (!this.loginForm.valid) {
       return
     }
-    console.log('AUTENTICAR')
+    console.log('AUTENTICAR', this.loginForm.value)
+    this.authService.login(this.loginForm.value).subscribe(r => {
+      console.log(r)
+    })
   }
 }
