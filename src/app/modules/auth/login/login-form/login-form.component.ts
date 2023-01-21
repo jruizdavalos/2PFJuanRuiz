@@ -11,7 +11,7 @@ import { AuthService } from '../../../../data/services/api/auth.service';
 export class LoginFormComponent {
 
 
-  public loginForm: FormGroup;
+  public loginForm;
   public loginSubmitted = false;
 
 
@@ -37,7 +37,7 @@ export class LoginFormComponent {
     })
   }
   get fm() {
-    return this.loginForm.controls
+    return this.loginForm.controls;
   }
   authenticate() {
     this.loginSubmitted = true;

@@ -10,31 +10,33 @@ import { AuthService } from '../../data/services/api/auth.service';
   styleUrls: ['./left-nav.component.scss']
 })
 export class LeftNavComponent implements OnInit {
-  @Output() showMenu = new EventEmitter<any>()
+  @Output() showMenu = new EventEmitter<any>();
+
   public faBars = faBars
   public name = 'Juan Ruiz';
   public position = ' Junior';
   public avatar = 'https://ideapod.com/wp-content/uploads/2017/08/person-1.jpg'
   public logo = 'assets/images/defaults/logo.png'
   public menus: ILeftNavMenu[] = LEFT_NAV_MENUS;
-  public logoutMenu: ILeftNavMenu
+  public logoutMenu: ILeftNavMenu;
 
-  constructor(
-    private authService: AuthService
-  ) {
-    this.logoutMenu = {
-      title: '',
-      links: [
-        {
-          icon: faTimes,
-          name: 'Cerrar sesion',
-          method: () => this.authService.logout()
-        }
-      ]
-    }
-  }
+  constructor() { }
+  /*  constructor(
+     private authService: AuthService
+   ) {
+     this.logoutMenu = {
+       title: '',
+       links: [
+         {
+           icon: faTimes,
+           name: 'Cerrar sesion',
+           method: () => this.authService.logout()
+         }
+       ]
+     }
+   } */
 
-  ngOnInit(): void {
+  ngOnInit() {
 
   }
 

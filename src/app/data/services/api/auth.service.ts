@@ -17,11 +17,11 @@ export class AuthService {
   public nameUserLS = 'currentUserMain'
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private readonly http: HttpClient,
+    private readonly router: Router
   ) {
     this.currentUser = new BehaviorSubject(
-      JSON.parse(localStorage.getItem(this.nameUserLS) || '{}')
+      JSON.parse(localStorage.getItem(this.nameUserLS))
     );
   }
 
@@ -51,7 +51,7 @@ export class AuthService {
           this.setUserToLocalStorage(r.data)
           this.currentUser.next(r.data)
 
-          if (!response.error) {
+          if (response.error) {
             this.router.navigateByUrl(INTERNAL_ROUTES.PANEL_USER_LIST)
           }
 
@@ -63,10 +63,11 @@ export class AuthService {
       )
   }
 
-  logout() {
-    localStorage.removeItem(this.nameUserLS);
+  /* logout() {
+    localStorage.removeItem('token');
+    this.currentUser.next(null)
     this.router.navigateByUrl(INTERNAL_ROUTES.AUTH_LOGIN)
-  }
+  } */
   private setUserToLocalStorage(user: IApiUserAuthenticated) {
     localStorage.setItem(this.nameUserLS, JSON.stringify(user))
   }

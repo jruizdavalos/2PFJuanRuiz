@@ -3,8 +3,6 @@ export interface ILeftNavMenu {
   links: {
     icon: any;
     name: string;
-    link?: string;
-    method?: () => any;
   }[];
 };
 

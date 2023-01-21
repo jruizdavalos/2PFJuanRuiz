@@ -12,7 +12,7 @@ import { UserService } from '../../../data/services/api/user.service';
 export class UserDetailComponent implements OnInit {
 
   public id: number;
-  public currentUser: ICardUser[];
+  public currentUser: ICardUser;
 
 
   constructor(
@@ -26,12 +26,11 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
     /*     this.users.find(user => user.id === +this.id) */
 
-    this.userService.getUserById(1).subscribe(r => {
+    this.userService.getUserById(this.id).subscribe(r => {
 
       if (!r.error) {
         console.log(r.data)
         this.currentUser = r.data
-        //this.currentUser= r.data
         console.log('gdfgdf' + this.currentUser)
 
       }
