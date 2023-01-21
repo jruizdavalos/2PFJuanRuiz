@@ -13,20 +13,22 @@ import { INTERNAL_ROUTES } from '../../constants/routes/internal.routes';
 })
 export class AuthService {
 
-  public currentUser: BehaviorSubject<IApiUserAuthenticated>
-  public nameUserLS = 'currentUserMain'
+  public currentUserSub: BehaviorSubject<IApiUserAuthenticated>
+  public currentUser: Observable<IApiUserAuthenticated>
+
 
   constructor(
-    private readonly http: HttpClient,
-    private readonly router: Router
+    private http: HttpClient,
+    private router: Router
   ) {
-    this.currentUser = new BehaviorSubject(
-      JSON.parse(localStorage.getItem(this.nameUserLS))
+    this.currentUserSub = new BehaviorSubject(
+      JSON.parse(localStorage.getItem('currentUser'))
     );
+    this.currentUser = this.currentUserSub.asObservable();
   }
 
   get getUser(): IApiUserAuthenticated {
-    return this.currentUser.value
+    return this.currentUserSub.getValue()
   }
 
   login(
@@ -49,9 +51,9 @@ export class AuthService {
           response.data = r.data;
 
           this.setUserToLocalStorage(r.data)
-          this.currentUser.next(r.data)
+          this.currentUserSub.next(r.data)
 
-          if (response.error) {
+          if (!response.error) {
             this.router.navigateByUrl(INTERNAL_ROUTES.PANEL_USER_LIST)
           }
 
@@ -63,12 +65,12 @@ export class AuthService {
       )
   }
 
-  /* logout() {
-    localStorage.removeItem('token');
-    this.currentUser.next(null)
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.currentUserSub.next(null)
     this.router.navigateByUrl(INTERNAL_ROUTES.AUTH_LOGIN)
-  } */
+  }
   private setUserToLocalStorage(user: IApiUserAuthenticated) {
-    localStorage.setItem(this.nameUserLS, JSON.stringify(user))
+    localStorage.setItem('currentUser', JSON.stringify(user))
   }
 }

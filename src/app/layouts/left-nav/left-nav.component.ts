@@ -20,21 +20,21 @@ export class LeftNavComponent implements OnInit {
   public menus: ILeftNavMenu[] = LEFT_NAV_MENUS;
   public logoutMenu: ILeftNavMenu;
 
-  constructor() { }
-  /*  constructor(
-     private authService: AuthService
-   ) {
-     this.logoutMenu = {
-       title: '',
-       links: [
-         {
-           icon: faTimes,
-           name: 'Cerrar sesion',
-           method: () => this.authService.logout()
-         }
-       ]
-     }
-   } */
+
+  constructor(
+    private authService: AuthService
+  ) {
+    this.logoutMenu = {
+      title: '',
+      links: [
+        {
+          icon: faTimes,
+          name: 'Cerrar sesion',
+          method: () => this.authService.logout()
+        }
+      ]
+    }
+  }
 
   ngOnInit() {
 
